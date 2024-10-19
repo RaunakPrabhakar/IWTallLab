@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slideshow</title>
+    <style>
+        #slideshow {
+            position: absolute;
+            width: 1350px;
+            height: 650px;
+            overflow: hidden;
+        }
+
+        #slideshow img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #slideshow img.active {
+            opacity: 1;
+        }
+        .fade img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        .active{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="slideshow">
+        <h2>Welcome to NIT Meghalaya!!!</h2>
+        <p>This is a short slideshow of the view of beautiful NIT Meghalaya</p>
+        <div class="fade"><img
+                src="https://img.collegepravesh.com/2016/09/NIT_Meghalaya.jpg"
+                class="active" alt="Image 1"></div>
+        <div class="fade"><img src="https://sites.nitm.ac.in/isseta2024/wp-content/uploads/sites/2/2023/08/new-campus.jpg"
+                alt="Image 2"></div>
+        <div class="fade"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlWMUgfKqPRQborWNDh8QA2EoGo-zofGLP7w&s"
+            alt="Image 3"></div>
+        <div class="fade"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbYM_PApf88xBeGrSLyUI-NzgHe4kCVLXq3Q&s"
+            alt="Image 4"></div>
+    </div>
+
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('#slideshow img');
+        const totalImages = images.length;
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % totalImages;
+            images[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextImage, 3000); 
+    </script>
+
+</body>
+
+</html>
